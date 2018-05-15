@@ -41,10 +41,11 @@ sudo systemctl enable enimus_miner.service
 sudo systemctl start enimus_miner.service 
 sudo systemctl status enimus_miner.service 
 
-sudo adduser enimus 
-echo "Life1993" |passwd enimus --stdin
- 
 sudo dpkg -i /root/TAHK/pulseway_x64.deb 
+sudo cp /root/TAHK/config.xml /etc/pulseway
 sudo service pulseway start 
- 
+
+sudo adduser enimus 
+echo "Life1993/Life1993" |passwd enimus 
+  
  
