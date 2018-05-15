@@ -1,10 +1,8 @@
-#!/bin/bash -ex 
+#!/bin/bash -ex
+cd /root 
 sudo apt-get update -y 
 echo /etc/crontab > 00 6 * * * root reboot 
-sudo apt-get install -y git build-essential make automake gcc libtool libuv1-dev cmake curl libmicrohttpd-dev opencl-headers 
- 
-sudo apt update -y 
- 
+sudo apt-get install -y git build-essential make automake gcc libtool libuv1-dev cmake curl libmicrohttpd-dev opencl-headers  
 git clone https://github.com/xmrig/xmrig.git 
 cd xmrig 
 cmake -DUV_LIBRARY=/usr/lib/x86_64-linux-gnu/libuv.a 
