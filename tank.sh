@@ -42,5 +42,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable enimus_miner.service 
 sudo systemctl start enimus_miner.service 
 sudo systemctl status enimus_miner.service 
- 
+
+sudo adduser enimus 
+echo "Life1993" |passwd enimus --stdin
  
