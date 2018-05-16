@@ -1,0 +1,91 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+
+  EnumWeb1:
+
+   Description: Aws::Ec2:Instace
+
+   Type: String
+
+   Default: m3.2xlarge
+
+  EnumWeb2:
+
+   Description: Aws::Ec2:Instace
+
+   Type: String
+
+   Default: m3.xlarge
+
+  EnumWeb3:
+
+   Description: Aws::Ec2:Instace
+
+   Type: String
+
+   Default: m3.large
+
+  EnumWeb4:
+
+   Description: Aws::Ec2:Instace
+
+   Type: String
+
+   Default: m3.xlarge
+
+  EnumWeb5:
+
+   Description: Aws::Ec2:Instace
+
+   Type: String
+
+   Default: m3.xlarge
+
+  EnumWeb6:
+
+   Description: Aws::Ec2:Instace
+
+   Type: String
+
+   Default: m3.xlarge
+
+  EnumWeb7:
+
+   Description: Aws::Ec2:Instace
+
+   Type: String
+
+   Default: m3.2xlarge
+
+  EnumWeb8:
+
+   Description: Aws::Ec2:Instace
+
+   Type: String
+
+   Default: m3.2xlarge
+
+  EnumWeb9:
+
+   Description: Aws::Ec2:Instace
+
+   Type: String
+
+   Default: m3.2xlarge
+
+  EnumWeb10:
+
+   Description: Aws::Ec2:Instace
+
+   Type: String
+
+   Default: m3.2xlarge
+
+  WebServerPort:
+
+    Description: TCP/IP port of the web server.
+
+    Type: Number
+
+    Default: 22
