@@ -39,7 +39,7 @@ sudo sed -i 's/"pass": *"[^"]*",/"pass": "ENIMUS-TAHK-VULTR:enimus@enimus.info",
  
 sudo sed -i 's#"log-file": *null,#"log-file": "'./xmrig.log'",#' ./config.json 
  
-sudo cat >/tmp/enimus_miner.service <<EOL 
+sudo cat >/tmp/enimus_miner.service<<EOL 
 [Unit]
 Description=Enimus-TAHK service
 After=network.target
@@ -49,10 +49,8 @@ ExecStart=/usr/local/bin/xmrig --config=/root/xmrig/config.json
 Restart=always
 User=root
 [Install]
-WantedBy=multi-user.target
- 
-EOL 
- 
+WantedBy=multi-user.target<<EOL
+EOL
 sudo mv /tmp/enimus_miner.service /etc/systemd/system/enimus_miner.service 
 # this is kick off aaall miners lol.
 sudo sed -i 's#"log-file": *null,#"log-file": "'/xmrig.log'",#' ./config.json 
