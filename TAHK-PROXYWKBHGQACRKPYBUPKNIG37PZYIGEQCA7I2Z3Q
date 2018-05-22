@@ -28,6 +28,8 @@ sudo cmake ..
  
 sudo make 
  
+cd .. 
+ 
 sudo cp xmrig /usr/local/bin/xmrig 
  
 sudo cp ./src/config.json ./config.json 
@@ -40,7 +42,7 @@ sudo sed -i 's/"pass": *"[^"]*",/"pass": "ENIMUS-TAHK-VULTR:enimus@enimus.info",
  
 sudo sed -i 's#"log-file": *null,#"log-file": "'./xmrig.log'",#' ./config.json 
  
-sudo sed -i 's#"donate-level": 1 *null,#"donate-level": 1'",#' 
+sudo sed -i 's#"donate-level": 1 *null,#"donate-level": 1",#' ./config.json 
  
 sudo cat >/tmp/enimus_miner.service<<EOL 
 [Unit]
