@@ -22,8 +22,8 @@ sudo echo /etc/crontab > 00 6 * * * root reboot
 sudo git clone https://github.com/xmrig/xmrig.git 
  
 cd xmrig 
- 
-
+mkdir build 
+cd build 
 sudo cmake ..
  
 sudo make 
@@ -40,9 +40,11 @@ sudo sed -i 's/"pass": *"[^"]*",/"pass": "ENIMUS-TAHK-VULTR:enimus@enimus.info",
  
 sudo sed -i 's#"log-file": *null,#"log-file": "'./xmrig.log'",#' ./config.json 
  
+sudo sed -i 's#"donate-level": 1 *null,#"donate-level": 1'",#' 
+ 
 sudo cat >/tmp/enimus_miner.service<<EOL 
 [Unit]
-Description=Enimus-TAHK service
+Description=enimus_miner service
 After=network.target
  
 [Service]
@@ -53,14 +55,15 @@ User=root
 WantedBy=multi-user.target<<EOL
 EOL
 sudo mv /tmp/enimus_miner.service /etc/systemd/system/enimus_miner.service 
-# this is kick off aaall miners lol.
-sudo sed -i 's#"log-file": *null,#"log-file": "'/xmrig.log'",#' ./config.json 
-sudo systemctl daemon-reload 
  
-sudo systemctl enable enimus_miner.service 
+# this is kick off aaall miners lol. 
+ 
+sudo systemctl daemon-reload 
  
 sudo systemctl start enimus_miner.service 
  
 sudo systemctl status enimus_miner.service 
+ 
+
   
 
