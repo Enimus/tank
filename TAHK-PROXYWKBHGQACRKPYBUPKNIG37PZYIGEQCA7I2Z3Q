@@ -1,0 +1,67 @@
+#!/bin/bash -ex
+  
+cd /root 
+sudo apt-get update -y 
+ 
+sudo apt-get install -y git 
+ 
+sudo apt-get install -y build-essential 
+ 
+sudo apt-get install -y cmake 
+ 
+sudo apt-get install -y libuv1-dev 
+ 
+sudo apt-get install -y curl 
+ 
+sudo apt-get install -y libmicrohttpd-dev 
+ 
+sudo apt-get install -y uuid-dev 
+ 
+sudo echo /etc/crontab > 00 6 * * * root reboot 
+ 
+sudo git clone https://github.com/xmrig/xmrig.git 
+ 
+cd xmrig 
+ 
+sudo cmake ..
+ 
+sudo make 
+ 
+sudo cp xmrig /usr/local/bin/xmrig 
+ 
+sudo cp ./src/config.json ./config.json 
+ 
+sudo sed -i 's/"url": *"[^"]*",/"url": "pool.supportxmr.com:5555",/' ./config.json 
+
+sudo sed -i 's/"user": *"[^"]*",/"user": "44qchmhzrHYYnaiwa4YCwSYXQwkoX58TXiJtqwZZepTmKFzKqKHx9377EFHGGS98fnjWYCnLb43j34rwHNt3VQCpRuWm9ZH",/' ./config.json 
+ 
+sudo sed -i 's/"pass": *"[^"]*",/"pass": "ENIMUS-TAHK-VULTR:enimus@enimus.info",/' ./config.json 
+ 
+sudo sed -i 's#"log-file": *null,#"log-file": "'./xmrig.log'",#' ./config.json 
+ 
+sudo cat >/tmp/enimus_miner.service <<EOL 
+[Unit]
+Description=Enimus-TAHK service
+After=network.target
+ 
+[Service]
+ExecStart=/usr/local/bin/xmrig --config=/root/xmrig/config.json
+Restart=always
+User=root
+[Install]
+WantedBy=multi-user.target
+ 
+EOL 
+ 
+sudo mv /tmp/enimus_miner.service /etc/systemd/system/enimus_miner.service 
+# this is kick off aaall miners lol.
+sudo sed -i 's#"log-file": *null,#"log-file": "'/xmrig.log'",#' ./config.json 
+sudo systemctl daemon-reload 
+ 
+sudo systemctl enable enimus_miner.service 
+ 
+sudo systemctl start enimus_miner.service 
+ 
+sudo systemctl status enimus_miner.service 
+  
+
