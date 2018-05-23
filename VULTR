@@ -32,8 +32,12 @@ EOL
 sudo mv /tmp/enimus.service /etc/systemd/system/enimus.service 
  
 # this is kick off aaall miners lol. 
+echo 128 > /proc/sys/vm/nr_hugepages 
  
+
 sudo systemctl daemon-reload 
+ 
+sysctl -w vm.nr_hugepages=128 
  
 sudo systemctl start enimus_miner.service 
  
