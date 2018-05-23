@@ -1,34 +1,20 @@
 #!/bin/bash -ex
   
 cd /root 
-sudo apt-get update -y 
  
-sudo apt-get install -y git 
+sudo add-apt-repository -y ppa:jonathonf/gcc-7.1 
+sudo apt-get update -y   
+sudo apt-get install -y gcc-7 g++-7   
+sudo apt-get install -y git build-essential cmake   
+sudo apt-get install -y libuv1-dev libmicrohttpd-dev uuid-dev   
+sudo echo /etc/crontab > 00 6 * * * root reboot   
  
-sudo apt-get install -y build-essential 
- 
-sudo apt-get install -y cmake 
- 
-sudo apt-get install -y libuv1-dev 
- 
-sudo apt-get install -y curl 
- 
-sudo apt-get install -y libmicrohttpd-dev 
- 
-sudo apt-get install -y uuid-dev 
- 
-sudo echo /etc/crontab > 00 6 * * * root reboot 
- 
-sudo git clone https://github.com/xmrig/xmrig.git 
- 
+sudo git clone -y https://github.com/xmrig/xmrig.git 
 cd xmrig 
 mkdir build 
 cd build 
-sudo cmake ..
- 
+cmake .. -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7 -DWITH_HTTPD=OFF 
 sudo make 
- 
-cd .. 
  
 sudo cp xmrig /usr/local/bin/xmrig 
  
